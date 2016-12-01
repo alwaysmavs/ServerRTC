@@ -1,4 +1,4 @@
-## HTTP请求鉴权
+## 2.1 HTTP请求鉴权
 
 Qiniu RTC Server API 通过 Qiniu Authorization 方式进行鉴权，每个房间管理HTTP 请求头部需增加一个 Authorization 字段：
 
@@ -52,9 +52,9 @@ encodedSign = urlsafe_base64_encode(sign)
 
 
 
-## 创建房间
+## 2.2 创建房间
 
-### 1 请求包
+### 请求包
 
 ```
 
@@ -76,7 +76,7 @@ Content-Type: application/json
 
 **UserMax**: int类型，该房间支持的最大会议人数，可选。如果没有指定，则默认最多3人。
 
-### 2 返回包
+### 返回包
 
 ```
 
@@ -98,9 +98,9 @@ Content-Type: application/json
 
 
 
-## 查看房间
+## 2.3 查看房间
 
-### 1 请求包
+### 请求包
 
 ```
 
@@ -112,7 +112,7 @@ Authorization: <QiniuToken>
 
 **RoomName**: 房间名称。
 
-### 2 返回包
+### 返回包
 
 ```
 200 OK 
@@ -137,9 +137,9 @@ Authorization: <QiniuToken>
 **UserMax**: int类型，该房间支持的最大会议人数。
 
 
-## 删除房间
+## 2.4 删除房间
 
-### 1 请求包
+### 请求包
 
 ```
 
@@ -151,7 +151,7 @@ Authorization: <QiniuToken>
 
 **RoomName**: 房间名称
 
-### 2 返回包
+### 返回包
 
 ```
 
@@ -171,7 +171,7 @@ Authorization: <QiniuToken>
 
 
 
-## RoomToken 的计算
+## 2.5 RoomToken 的计算
 
 连麦用户终端通过房间管理鉴权获取七牛连麦服务，该鉴权包含了房间名称、用户ID、用户权限、有效时间等信息，需要通过客户的业务服务器使用七牛颁发的AccessKey和SecretKey进行签算并分发给手机APP。手机端SDK以拟定的用户ID身份连接服务器，加入该房间进行视频会议。若用户ID或房间与token内的签算信息不符，则无法通过鉴权加入房间。
 
